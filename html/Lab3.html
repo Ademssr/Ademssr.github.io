@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Chap2 Demo Tessellation </title>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition;
+	void main(){
+		gl_Position = vPosition;
+	}
+	
+	</script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+	precision mediump float;
+	void main(){
+		gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );
+	}
+	</script>
+	
+	<script id="vertex-shader2" type="x-shader/x-vertex2">
+	attribute vec3 vPosition;
+	attribute vec3 vColor;
+	varying vec4 color;
+	
+	void main(){
+		gl_Position = vec4( vPosition, 1.0 );
+		color = vec4( vColor, 1.0 );
+	}
+	</script>
+	
+	<script id="fragment-shader2" type="x-shader/x-fragment2">
+	precision mediump float;
+	varying vec4 color;
+	void main(){
+		gl_FragColor = color;
+	}
+	</script>
+	
+	<script id="vertex-shader3" type="x-shader/x-vertex3">
+	attribute vec4 vPosition;
+	void main(){
+		gl_Position = vPosition;
+	}
+	</script>
+	
+	<script id="fragment-shader3" type="x-shader/x-fragment3">
+	precision mediump float;
+	void main(){
+		gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );
+	}
+	</script>
+	
+
+    <script type="text/javascript" src="../Lab/Lab3/a/webgl-utils.js"></script>
+    <script type="text/javascript" src="../Lab/Lab3/a/initShaders.js"></script>
+    <script type="text/javascript" src="../Lab/Lab3/a/gl-matrix-min.js"></script>
+
+    
+</head>
+<style type="text/css">
+		iframe{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			  
+		}
+	</style>
+<body>
+	<select id="select" onchange="change()">
+			<option value="1">a</option>
+			<option value="2">b</option>
+			<option value="3">c</option>
+			<option value="4">d</option>
+			<option value="5">e</option>
+	</select>
+    <table id="tab1" style="display: block;">
+		<tr>
+			<td>层数：</td>
+			<td><input type="text" id="num" value="4"></td>
+		</tr>
+		<tr>
+			<td><button  onclick="initTriangles()">确认</button></td>
+		</tr>
+	</table>
+	<table id="tab2"style="display: none;" >
+		<tr>
+			<td>层数：</td>
+			<td><input type="text" id="num" value="4"></td>
+		</tr>
+		<tr>
+			<td>旋转角度：</td>
+			<td><input type="text" id="theta" value="0"></td>
+		</tr>
+		<tr>
+			<td><button  onclick="initTriangles()">确认</button></td>
+		</tr>
+	</table>
+	
+    <canvas id="gl-canvas" width="600" height="600">你的浏览器不支持HTML5 canvas元素</canvas>
+	<script type="text/javascript" src="../Lab/Lab3/e/triangle-tessa.js"></script>
+	
+</body>
+
+</html>
