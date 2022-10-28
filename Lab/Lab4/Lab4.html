@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Chap3 Demo -- Rotating Square Slider</title>
+    <script id="rot-v-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition;
+	uniform float theta;
+	
+	void main()
+	{
+		float u = cos( theta );
+		float v = sin( theta );
+
+		gl_Position.x = vPosition.x * u - vPosition.y * v;
+		gl_Position.y = vPosition.x * v + vPosition.y * u;
+		gl_Position.z = 0.0;
+		gl_Position.w = 1.0;
+	}
+	</script>
+
+    <script id="rot-f-shader" type="x-shader/x-fragment">
+	precision mediump float;
+	varying vec4 vColor;
+	void main()
+	{
+		gl_FragColor = vec4( 0.0, 0.0, 1.0, 1.0 );
+	}
+	</script>
+	
+	
+    <script type="text/javascript" src="webgl-utils.js"></script>
+    <script type="text/javascript" src="initShaders.js"></script>
+    <script type="text/javascript" src="gl-matrix-min.js"></script>
+
+    <script type="text/javascript" src="rotsquareslider.js"></script>
+</head>
+
+<body onload="initRotSquare()">
+	<a href="../../index.html"><h1>返回</h1></a>
+    <h1>Control rotation using Menus</h1><br>
+    <canvas id="rot-canvas" width="720" height="720">你的浏览器不支持HTML5 canvas元素</canvas>
+    <fieldset>
+        <legend>转动控制</legend>
+        1：<button id="direction" onclick="changeDir()">换个转动方向</button><br>
+        Speed 0<input type="range" id="speedcon" min="0" max="20" value="10" step="2"> 100%
+		<br>2：<button id="direction" onclick="changeDir2()">换个转动方向</button><br>
+		Speed 0<input type="range" id="speedcon2" min="0" max="20" value="10" step="2"> 100%
+		<br>3：<button id="direction" onclick="changeDir3()">换个转动方向</button><br>
+	    Speed 0<input type="range" id="speedcon3" min="0" max="20" value="10" step="2"> 100%
+		<br>4：<button id="direction" onclick="changeDir4()">换个转动方向</button><br>
+	    Speed 0<input type="range" id="speedcon4" min="0" max="20" value="10" step="2"> 100%
+	
+	</fieldset>
+	
+	
+</body>
+
+</html>

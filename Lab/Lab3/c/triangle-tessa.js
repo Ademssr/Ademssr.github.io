@@ -8,7 +8,7 @@ var gl;
 var points = [];
 
 /** Parameters */
-var theta=0;
+var theta=60;
 var twist=true;
 
 var radius=1.0;
